@@ -19,3 +19,28 @@
 # How many sides? 20
 # Here are the results: [18, 19, 6, 8, 13, 6, 6, 6, 18, 12, 20, 10, 14, 8, 14, 17, 12, 15, 20, 17]
 
+import random
+
+def DiceRoll(dicecount, dicesides):
+    results = []
+    for _ in range(dicecount):
+        roll = random.randint(1, dicesides)
+        results.append(roll)
+    return results
+
+def AskUserThenRoll():
+    while True:
+        try:
+            dicecount = int(input("How many dice to roll? "))
+            dicesides = int(input("How many sides to each dice? "))
+
+            if dicecount <= 0 or dicesides <= 1:
+                print("Error! Dice sides must be greater than 1 & dice count must be greater than 0.")
+            else:
+                result = DiceRoll(dicecount, dicesides)
+                print("Here are your results:", result)
+                break
+        except ValueError:
+            print("Error! Please use only whole numbers.")
+
+AskUserThenRoll()
